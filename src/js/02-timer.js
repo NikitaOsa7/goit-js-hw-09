@@ -44,11 +44,11 @@ const options = {
       const handleClickStart = () => {
         timerId = setInterval(() => {
         currentDate = new Date();
-        const balanceTime = convertMs(selectedDates[0].getTime() - currentDate.getTime());
-        days.textContent = addLeadingZero(balanceTime.days);
-        hours.textContent = addLeadingZero(balanceTime.hours);
-        minutes.textContent = addLeadingZero(balanceTime.minutes);
-        seconds.textContent = addLeadingZero(balanceTime.seconds);    
+        const remainingTime = convertMs(selectedDates[0].getTime() - currentDate.getTime());
+        days.textContent = addLeadingZero(remainingTime.days);
+        hours.textContent = addLeadingZero(remainingTime.hours);
+        minutes.textContent = addLeadingZero(remainingTime.minutes);
+        seconds.textContent = addLeadingZero(remainingTime.seconds);    
         }, 1000);
       startButton.removeEventListener("click", handleClickStart);
       startButton.disabled = true;
