@@ -3,24 +3,24 @@ function getRandomColor() {
 }
 
 const startBtn = document.querySelector('button[data-start]');
-
 const stopBtn = document.querySelector('button[data-stop]');
 
-const handleClickStart = () => {
+const onStartButtonClick = () => {
     timerId = setInterval(() => {
         const currentColor = getRandomColor();
         document.body.style.backgroundColor = currentColor;
     }, 1000);
-    startBtn.removeEventListener('click', handleClickStart);
-    stopBtn.addEventListener('click', handleClickStop);
+
+    startBtn.removeEventListener('click', onStartButtonClick);
+    stopBtn.addEventListener('click', onStopButtonClick);
     startBtn.disabled = true;
 };
 
-const handleClickStop = () => {
+const onStopButtonClick = () => {
     clearInterval(timerId);
-    stopBtn.removeEventListener('click', handleClickStop);
-    startBtn.addEventListener('click', handleClickStart);
+    startBtn.addEventListener('click', onStartButtonClick);
+    stopBtn.removeEventListener('click', onStopButtonClick);
     startBtn.disabled = false;
 };
 
-startBtn.addEventListener('click', handleClickStart);
+startBtn.addEventListener('click', onStartButtonClick);
